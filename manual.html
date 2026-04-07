@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Uso - Rocknix Manager</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #1e293b;
+            --accent: #10b981;
+            --bg: #0f172a;
+            --text: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary), #000);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav-back {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .lang-selector {
+            margin-bottom: 2rem;
+            text-align: right;
+        }
+
+        .lang-selector select {
+            background: var(--secondary);
+            color: white;
+            border: 1px solid var(--primary);
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        section {
+            background: rgba(30, 41, 59, 0.4);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid #334155;
+        }
+
+        h1, h2 { color: var(--primary); }
+        h3 { color: var(--accent); margin-top: 1.5rem; }
+
+        .step-img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border: 1px solid #475569;
+        }
+
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            opacity: 0.6;
+        }
+
+        ul { padding-left: 1.2rem; }
+        li { margin-bottom: 0.5rem; }
+
+        code { background: #000; padding: 2px 5px; border-radius: 4px; color: #fb7185; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="index.html" class="nav-back">← Back to Home</a>
+        <h1 data-i18n="man_title">Manual do Usuário</h1>
+        <p data-i18n="man_subtitle">Aprenda a dominar todas as funções do Rocknix Manager.</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="lang-selector">
+        <select id="langSwitch" onchange="changeLanguage()">
+            <option value="pt">🇧🇷 Português</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="hi">🇮🇳 हिन्दी</option>
+        </select>
+    </div>
+
+    <section>
+        <h2 data-i18n="intro_h">1. Introdução</h2>
+        <p data-i18n="intro_p">O Rocknix Manager foi criado para facilitar a gestão de cartões SD do sistema Rocknix. Como o sistema utiliza partições Linux (EXT4), muitos usuários de Windows têm dificuldade em acessar as pastas de jogos. Este programa resolve isso de forma simples e segura.</p>
+    </section>
+
+    <section>
+        <h2 data-i18n="prep_h">2. Preparação</h2>
+        <ul>
+            <li data-i18n="prep_1">Insira o cartão SD do seu console no computador usando um adaptador de qualidade.</li>
+            <li data-i18n="prep_2">Certifique-se de que nenhum outro programa de gestão de disco esteja aberto.</li>
+            <li data-i18n="prep_3">Execute o <strong>Rocknix Manager</strong> com privilégios de Administrador (necessário para ler partições).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 data-i18n="feat_h">3. Funções Principais</h2>
+        
+        <h3><span class="badge">UI</span> <span data-i18n="feat_1_h">Gestão de ROMs</span></h3>
+        <p data-i18n="feat_1_p">Acesse a aba de jogos para visualizar todas as pastas de consoles (SFC, MD, PS1, etc). Você pode arrastar e soltar arquivos diretamente para o cartão.</p>
+
+        <h3><span class="badge">SYS</span> <span data-i18n="feat_2_h">Bios e System</span></h3>
+        <p data-i18n="feat_2_p">Gerencie arquivos críticos do sistema e BIOS sem o risco de corromper a partição de boot. O programa protege arquivos vitais do Rocknix.</p>
+
+        <h3><span class="badge">NPU</span> <span data-i18n="feat_3_h">Otimização de Performance</span></h3>
+        <p data-i18n="feat_3_p">Configurações especiais para dispositivos que utilizam núcleos NPU para processamento acelerado de áudio e vídeo.</p>
+    </section>
+
+    <section>
+        <h2 data-i18n="trouble_h">4. Solução de Problemas</h2>
+        <p data-i18n="trouble_p">Se o cartão não for detectado:</p>
+        <ul>
+            <li data-i18n="err_1">Verifique se o adaptador SD está bem conectado.</li>
+            <li data-i18n="err_2">No Windows, abra o 'Gerenciamento de Disco' para ver se o cartão possui uma letra de unidade atribuída.</li>
+            <li data-i18n="err_3">No Linux, certifique-se de usar <code>sudo</code> para rodar o AppImage.</li>
+        </ul>
+    </section>
+</div>
+
+<footer>
+    <p>Rocknix Manager Manual &copy; 2026 - <a href="https://github.com/xtrempkch-droid" style="color: var(--primary);">xtrempkch-droid</a></p>
+</footer>
+
+<script>
+    const translations = {
+        pt: {
+            man_title: "Manual do Usuário",
+            man_subtitle: "Aprenda a dominar todas as funções do Rocknix Manager.",
+            intro_h: "1. Introdução",
+            intro_p: "O Rocknix Manager foi criado para facilitar a gestão de cartões SD do sistema Rocknix. O programa permite acessar partições Linux de forma simples no Windows e Mac.",
+            prep_h: "2. Preparação",
+            prep_1: "Insira o cartão SD com um adaptador de qualidade.",
+            prep_2: "Feche outros gestores de partição.",
+            prep_3: "Execute como Administrador/Sudo.",
+            feat_h: "3. Funções Principais",
+            feat_1_h: "Gestão de ROMs",
+            feat_1_p: "Arraste e solte seus jogos nas pastas corretas de cada console.",
+            feat_2_h: "Bios e System",
+            feat_2_p: "Gerencie arquivos de BIOS com segurança.",
+            feat_3_h: "Otimização NPU",
+            feat_3_p: "Ajustes de núcleos NPU para melhor performance de áudio.",
+            trouble_h: "4. Solução de Problemas",
+            trouble_p: "Se o cartão não for detectado:",
+            err_1: "Verifique a conexão do adaptador.",
+            err_2: "Confira a letra da unidade no Windows.",
+            err_3: "No Linux, use permissão root.",
+        },
+        en: {
+            man_title: "User Manual",
+            man_subtitle: "Learn how to master all Rocknix Manager functions.",
+            intro_h: "1. Introduction",
+            intro_p: "Rocknix Manager was created to simplify SD card management for the Rocknix system. It allows easy access to Linux partitions on Windows and Mac.",
+            prep_h: "2. Preparation",
+            prep_1: "Insert the SD card using a high-quality adapter.",
+            prep_2: "Close other partition managers.",
+            prep_3: "Run as Administrator/Sudo.",
+            feat_h: "3. Core Features",
+            feat_1_h: "ROM Management",
+            feat_1_p: "Drag and drop your games into the correct console folders.",
+            feat_2_h: "Bios & System",
+            feat_2_p: "Manage BIOS files safely without corruption risks.",
+            feat_3_h: "NPU Optimization",
+            feat_3_p: "NPU core tweaks for better audio performance.",
+            trouble_h: "4. Troubleshooting",
+            trouble_p: "If the card is not detected:",
+            err_1: "Check the adapter connection.",
+            err_2: "Check the drive letter in Windows Disk Management.",
+            err_3: "On Linux, ensure you have root permissions.",
+        }
+        // ... (Adicionar as outras 8 línguas seguindo o mesmo padrão)
+    };
+
+    function changeLanguage() {
+        const lang = document.getElementById("langSwitch").value;
+        const elements = document.querySelectorAll("[data-i18n]");
+        elements.forEach(el => {
+            const key = el.getAttribute("data-i18n");
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    window.onload = () => {
+        const savedLang = localStorage.getItem('preferredLang') || 'pt';
+        document.getElementById("langSwitch").value = savedLang;
+        changeLanguage();
+    };
+</script>
+
+</body>
+</html>
