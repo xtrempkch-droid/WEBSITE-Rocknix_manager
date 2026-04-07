@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocknix Manager - Download Multiplataforma</title>
+    <title>Rocknix Manager - Prévia, Download & Tutorial</title>
     <style>
         :root {
             --primary: #3b82f6;
@@ -35,9 +35,27 @@
             padding: 0 1rem;
         }
 
+        /* Nova seção para a imagem da UI */
+        .screenshot-container {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: rgba(30, 41, 59, 0.3);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .screenshot-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            border: 2px solid #334155;
+        }
+
         .download-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
@@ -109,10 +127,15 @@
 
 <header>
     <h1>Rocknix Manager</h1>
-    <p>Gerencie seu dispositivo Rocknix em qualquer sistema operacional.</p>
+    <p>A ferramenta multiplataforma definitiva para o seu dispositivo Rocknix.</p>
 </header>
 
 <div class="container">
+    <section class="screenshot-container">
+        <h2>Conheça a Interface</h2>
+        <img src="UI.png" alt="Interface Gráfica do Rocknix Manager" title="Prévia do Rocknix Manager">
+    </section>
+
     <section class="download-cards">
         <div class="card">
             <div>
@@ -143,21 +166,21 @@
     </section>
 
     <section class="tutorial">
-        <h2>Guia de Instalação</h2>
+        <h2>Guia Rápido</h2>
         
         <h3>Windows</h3>
-        <p>Basta baixar o arquivo e executar. Se o Windows SmartScreen aparecer, clique em "Mais informações" e "Executar assim mesmo".</p>
+        <p>Baixe o arquivo e execute. Se o Windows SmartScreen aparecer, clique em "Mais informações" e "Executar assim mesmo".</p>
 
         <h3>Linux</h3>
-        <p>Dê permissão de execução ao arquivo baixado:</p>
+        <p>Dê permissão de execução ao arquivo AppImage:</p>
         <pre><code>chmod +x RocknixManager.AppImage</code></pre>
 
         <h3>macOS</h3>
-        <p>Após baixar e mover para a pasta Aplicativos, você pode encontrar um aviso de segurança. Para abrir:</p>
+        <p>Após mover para a pasta Aplicativos, você pode encontrar um aviso de segurança. Para abrir:</p>
         <ol>
-            <li>Clique com o <strong>botão direito</strong> (ou Control + Clique) no ícone do Rocknix Manager.</li>
+            <li>Clique com o <strong>botão direito</strong> no ícone do Rocknix Manager.</li>
             <li>Selecione <strong>"Abrir"</strong> no menu.</li>
-            <li>Na janela que aparecer, clique em <strong>"Abrir"</strong> novamente. Isso salvará uma exceção para o app.</li>
+            <li>Na janela, clique em <strong>"Abrir"</strong> novamente.</li>
         </ol>
     </section>
 </div>
