@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocknix Manager - Download & Tutorial</title>
+    <title>Rocknix Manager - Download Multiplataforma</title>
     <style>
         :root {
             --primary: #3b82f6;
@@ -30,14 +30,14 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
 
         .download-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
@@ -45,10 +45,13 @@
         .card {
             background: var(--secondary);
             border-radius: 12px;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
             transition: transform 0.3s;
             border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
@@ -57,10 +60,9 @@
         }
 
         .btn {
-            display: inline-block;
-            background: var(--primary);
+            display: block;
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
@@ -69,6 +71,7 @@
 
         .btn-win { background: #0078d4; }
         .btn-lin { background: #f89820; }
+        .btn-mac { background: #555555; }
 
         .tutorial {
             background: rgba(30, 41, 59, 0.5);
@@ -78,12 +81,20 @@
         }
 
         h2 { color: var(--accent); border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        h3 { margin-top: 1.5rem; }
         
         code {
             background: #000;
             padding: 0.2rem 0.5rem;
             border-radius: 4px;
             color: #ef4444;
+        }
+
+        .os-badge {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: var(--primary);
         }
 
         footer {
@@ -98,46 +109,61 @@
 
 <header>
     <h1>Rocknix Manager</h1>
-    <p>Gerencie seus jogos e sistemas Rocknix de forma simples e rápida.</p>
+    <p>Gerencie seu dispositivo Rocknix em qualquer sistema operacional.</p>
 </header>
 
 <div class="container">
     <section class="download-cards">
         <div class="card">
-            <h3>Windows</h3>
-            <p>Versão executável (Portable .exe)</p>
-            <a href="https://github.com/xtrempkch-droid/Rocknix-Manager-Windows/releases/latest" class="btn btn-win">Download para Windows</a>
+            <div>
+                <span class="os-badge">Windows</span>
+                <h3>Versão Executável</h3>
+                <p>Compatível com Windows 10 e 11.</p>
+            </div>
+            <a href="https://github.com/xtrempkch-droid/Rocknix-Manager-Windows/releases/latest" class="btn btn-win">Download .EXE</a>
         </div>
 
         <div class="card">
-            <h3>Linux</h3>
-            <p>Versão AppImage (Universal)</p>
-            <a href="https://github.com/xtrempkch-droid/Rocknix-Manager-Windows/releases/latest" class="btn btn-lin">Download para Linux</a>
+            <div>
+                <span class="os-badge">Linux</span>
+                <h3>Versão AppImage</h3>
+                <p>Funciona na maioria das distros.</p>
+            </div>
+            <a href="https://github.com/xtrempkch-droid/Rocknix-Manager-Windows/releases/latest" class="btn btn-lin">Download AppImage</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <span class="os-badge">macOS</span>
+                <h3>Versão Apple</h3>
+                <p>Suporte para Intel e Apple Silicon.</p>
+            </div>
+            <a href="https://github.com/xtrempkch-droid/rocknix-manager-mac/releases/latest" class="btn btn-mac">Download .APP / .DMG</a>
         </div>
     </section>
 
     <section class="tutorial">
-        <h2>Tutorial de Uso</h2>
+        <h2>Guia de Instalação</h2>
         
-        <h3>1. Instalação</h3>
-        <p><strong>No Windows:</strong> Basta baixar o arquivo <code>.exe</code> e executá-lo. Não requer instalação formal.</p>
-        <p><strong>No Linux:</strong> Após baixar o <code>.AppImage</code>, dê permissão de execução:</p>
+        <h3>Windows</h3>
+        <p>Basta baixar o arquivo e executar. Se o Windows SmartScreen aparecer, clique em "Mais informações" e "Executar assim mesmo".</p>
+
+        <h3>Linux</h3>
+        <p>Dê permissão de execução ao arquivo baixado:</p>
         <pre><code>chmod +x RocknixManager.AppImage</code></pre>
 
-        <h3>2. Primeiro Acesso</h3>
-        <ul>
-            <li>Conecte o cartão SD do seu dispositivo Rocknix ao computador.</li>
-            <li>Abra o Rocknix Manager.</li>
-            <li>O programa deverá detectar automaticamente as partições de jogos (ROMs) e bios.</li>
-        </ul>
-
-        <h3>3. Funcionalidades Principais</h3>
-        <p>Utilize a interface para organizar pastas, transferir arquivos de sistema e gerenciar backups de forma intuitiva, sem precisar lidar com partições Linux invisíveis no Windows padrão.</p>
+        <h3>macOS</h3>
+        <p>Após baixar e mover para a pasta Aplicativos, você pode encontrar um aviso de segurança. Para abrir:</p>
+        <ol>
+            <li>Clique com o <strong>botão direito</strong> (ou Control + Clique) no ícone do Rocknix Manager.</li>
+            <li>Selecione <strong>"Abrir"</strong> no menu.</li>
+            <li>Na janela que aparecer, clique em <strong>"Abrir"</strong> novamente. Isso salvará uma exceção para o app.</li>
+        </ol>
     </section>
 </div>
 
 <footer>
-    <p>Projeto mantido por <a href="https://github.com/xtrempkch-droid" style="color: var(--primary);">xtrempkch-droid</a> no GitHub.</p>
+    <p>Projeto mantido por <a href="https://github.com/xtrempkch-droid" style="color: var(--primary);">xtrempkch-droid</a></p>
 </footer>
 
 </body>
