@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocknix Manager</title>
+    <title>Rocknix Manager - Official</title>
     <style>
         :root {
             --primary: #3b82f6;
@@ -14,7 +14,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -22,28 +22,26 @@
             padding: 0;
         }
 
-        .lang-selector {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            z-index: 100;
+        /* Header com Flexbox para evitar sobreposição */
+        header {
+            background: linear-gradient(135deg, var(--secondary), #000);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
         }
 
         .lang-selector select {
             background-color: var(--secondary);
             color: var(--text);
             border: 1px solid var(--primary);
-            padding: 0.5rem;
-            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
             cursor: pointer;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--secondary), #000);
-            padding: 4rem 1rem;
-            text-align: center;
-            border-bottom: 2px solid var(--primary);
-            position: relative;
+            font-size: 0.9rem;
         }
 
         .container {
@@ -55,17 +53,14 @@
         .screenshot-container {
             text-align: center;
             margin-bottom: 3rem;
-            background: rgba(30, 41, 59, 0.3);
-            padding: 1rem;
-            border-radius: 12px;
-            border: 1px solid #334155;
         }
 
         .screenshot-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5);
+            border-radius: 12px;
+            border: 2px solid #334155;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
         }
 
         .download-cards {
@@ -77,14 +72,17 @@
 
         .card {
             background: var(--secondary);
-            border-radius: 12px;
+            border-radius: 15px;
             padding: 1.5rem;
             text-align: center;
             border: 1px solid #334155;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: 0.3s;
         }
+
+        .card:hover { border-color: var(--primary); transform: translateY(-3px); }
 
         .btn {
             display: block;
@@ -94,8 +92,10 @@
             text-decoration: none;
             font-weight: bold;
             margin-top: 1rem;
+            transition: opacity 0.2s;
         }
 
+        .btn:hover { opacity: 0.9; }
         .btn-win { background: #0078d4; }
         .btn-lin { background: #f89820; }
         .btn-mac { background: #555555; }
@@ -107,13 +107,16 @@
             border-left: 4px solid var(--accent);
         }
 
-        h2 { color: var(--accent); border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        h2 { color: var(--accent); }
         
         footer {
             text-align: center;
-            padding: 2rem;
-            opacity: 0.7;
+            padding: 3rem 1rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
         }
+
+        code { background: #000; padding: 2px 6px; border-radius: 4px; color: #fb7185; }
     </style>
 </head>
 <body>
@@ -143,29 +146,37 @@
         <img src="UI.png" alt="UI Screenshot">
     </section>
 
-    <section class="download-cards">
+    <div class="download-cards">
         <div class="card">
-            <div><h3>Windows</h3><p data-i18n="win_desc">Compatível com Windows 10 e 11.</p></div>
+            <div>
+                <h3>Windows</h3>
+                <p data-i18n="win_desc">Compatível com Windows 10 e 11.</p>
+            </div>
             <a href="https://github.com/xtrempkch-droid/Rocknix-Manager-Windows/releases/latest" class="btn btn-win">Download .EXE</a>
         </div>
         <div class="card">
-            <div><h3>Linux</h3><p data-i18n="lin_desc">Funciona na maioria das distros.</p></div>
-            <a href="https://github.com/xtrempkch-droid/Rocknix-Manager-Windows/releases/latest" class="btn btn-lin">Download AppImage</a>
+            <div>
+                <h3>Linux</h3>
+                <p data-i18n="lin_desc">Funciona na maioria das distros.</p>
+            </div>
+            <a href="https://github.com/xtrempkch-droid/Rocknix-Manager-linux/releases/latest" class="btn btn-lin">Download AppImage</a>
         </div>
         <div class="card">
-            <div><h3>macOS</h3><p data-i18n="mac_desc">Suporte para Intel e Apple Silicon.</p></div>
+            <div>
+                <h3>macOS</h3>
+                <p data-i18n="mac_desc">Suporte para Intel e Apple Silicon.</p>
+            </div>
             <a href="https://github.com/xtrempkch-droid/rocknix-manager-mac/releases/latest" class="btn btn-mac">Download .APP</a>
         </div>
-    </section>
+    </div>
 
     <section class="tutorial">
         <h2 data-i18n="tut_title">Guia Rápido</h2>
-        <h3 id="tut_os_title">Instruções</h3>
-        <p id="tut_content" data-i18n="tut_pt_all">
+        <div data-i18n="tut_body">
             <strong>Windows:</strong> Execute o .exe diretamente.<br>
-            <strong>Linux:</strong> Use <code>chmod +x</code> no terminal para rodar o AppImage.<br>
-            <strong>macOS:</strong> Clique com o botão direito e selecione 'Abrir' para ignorar o aviso de segurança.
-        </p>
+            <strong>Linux:</strong> Use <code>chmod +x</code> para rodar o AppImage.<br>
+            <strong>macOS:</strong> Clique com o botão direito e selecione 'Abrir'.
+        </div>
     </section>
 </div>
 
@@ -182,7 +193,7 @@
             lin_desc: "Funciona na maioria das distros.",
             mac_desc: "Suporte para Intel e Apple Silicon.",
             tut_title: "Guia Rápido",
-            tut_pt_all: "<strong>Windows:</strong> Execute o .exe diretamente.<br><strong>Linux:</strong> Use <code>chmod +x</code> para rodar o AppImage.<br><strong>macOS:</strong> Clique com o botão direito e selecione 'Abrir'.",
+            tut_body: "<strong>Windows:</strong> Execute o .exe diretamente.<br><strong>Linux:</strong> Use <code>chmod +x</code> para rodar o AppImage.<br><strong>macOS:</strong> Clique com o botão direito e selecione 'Abrir'.",
             footer: "Projeto mantido por"
         },
         en: {
@@ -192,7 +203,7 @@
             lin_desc: "Works on most Linux distros.",
             mac_desc: "Support for Intel and Apple Silicon.",
             tut_title: "Quick Guide",
-            tut_pt_all: "<strong>Windows:</strong> Run the .exe directly.<br><strong>Linux:</strong> Use <code>chmod +x</code> to run the AppImage.<br><strong>macOS:</strong> Right-click and select 'Open'.",
+            tut_body: "<strong>Windows:</strong> Run the .exe directly.<br><strong>Linux:</strong> Use <code>chmod +x</code> to run the AppImage.<br><strong>macOS:</strong> Right-click and select 'Open'.",
             footer: "Project maintained by"
         },
         es: {
@@ -202,7 +213,7 @@
             lin_desc: "Funciona en la mayoría de las distribuciones.",
             mac_desc: "Soporte para Intel y Apple Silicon.",
             tut_title: "Guía Rápida",
-            tut_pt_all: "<strong>Windows:</strong> Ejecute el .exe directamente.<br><strong>Linux:</strong> Use <code>chmod +x</code> para el AppImage.<br><strong>macOS:</strong> Clic derecho e 'Abrir'.",
+            tut_body: "<strong>Windows:</strong> Ejecute el .exe directamente.<br><strong>Linux:</strong> Use <code>chmod +x</code> para el AppImage.<br><strong>macOS:</strong> Clic derecho y 'Abrir'.",
             footer: "Proyecto mantenido por"
         },
         fr: {
@@ -212,27 +223,27 @@
             lin_desc: "Fonctionne sur la plupart des distros.",
             mac_desc: "Support pour Intel et Apple Silicon.",
             tut_title: "Guide Rapide",
-            tut_pt_all: "<strong>Windows:</strong> Lancez le .exe directement.<br><strong>Linux:</strong> Utilisez <code>chmod +x</code>.<br><strong>macOS:</strong> Clic droit e 'Ouvrir'.",
+            tut_body: "<strong>Windows:</strong> Lancez le .exe directement.<br><strong>Linux:</strong> Utilisez <code>chmod +x</code>.<br><strong>macOS:</strong> Clic droit et 'Ouvrir'.",
             footer: "Projet maintenu par"
         },
         de: {
             subtitle: "Das ultimative plattformübergreifende Tool für Ihr Rocknix-Gerät.",
-            ui_title: "Benutzeroberfläche kennenlernen",
+            ui_title: "Benutzeroberfläche",
             win_desc: "Kompatibel mit Windows 10 und 11.",
             lin_desc: "Läuft auf den meisten Distros.",
             mac_desc: "Unterstützung für Intel und Apple Silicon.",
             tut_title: "Kurzanleitung",
-            tut_pt_all: "<strong>Windows:</strong> .exe direkt ausführen.<br><strong>Linux:</strong> <code>chmod +x</code> verwenden.<br><strong>macOS:</strong> Rechtsklick und 'Öffnen' wählen.",
+            tut_body: "<strong>Windows:</strong> .exe direkt ausführen.<br><strong>Linux:</strong> <code>chmod +x</code> verwenden.<br><strong>macOS:</strong> Rechtsklick e 'Öffnen'.",
             footer: "Projekt gepflegt von"
         },
         it: {
-            subtitle: "Lo strumento multipiattaforma definitivo per il tuo dispositivo Rocknix.",
+            subtitle: "Lo strumento multipiattaforma definitivo per Rocknix.",
             ui_title: "Scopri l'interfaccia",
             win_desc: "Compatibile con Windows 10 e 11.",
             lin_desc: "Funziona sulla maggior parte delle distro.",
             mac_desc: "Supporto per Intel e Apple Silicon.",
             tut_title: "Guida Rapida",
-            tut_pt_all: "<strong>Windows:</strong> Esegui direttamente il .exe.<br><strong>Linux:</strong> Usa <code>chmod +x</code>.<br><strong>macOS:</strong> Tasto destro e seleziona 'Apri'.",
+            tut_body: "<strong>Windows:</strong> Esegui il .exe.<br><strong>Linux:</strong> Usa <code>chmod +x</code>.<br><strong>macOS:</strong> Tasto destro e 'Apri'.",
             footer: "Progetto gestito da"
         },
         zh: {
@@ -242,49 +253,62 @@
             lin_desc: "适用于大多数 Linux 发行版。",
             mac_desc: "支持 Intel 和 Apple Silicon。",
             tut_title: "快速指南",
-            tut_pt_all: "<strong>Windows:</strong> 直接运行 .exe。<br><strong>Linux:</strong> 使用 <code>chmod +x</code> 运行 AppImage。<br><strong>macOS:</strong> 右键单击并选择“打开”。",
+            tut_body: "<strong>Windows:</strong> 直接运行 .exe。<br><strong>Linux:</strong> 使用 <code>chmod +x</code>。<br><strong>macOS:</strong> 右键单击并选择“打开”。",
             footer: "项目维护者"
         },
         ja: {
-            subtitle: "Rocknix デバイス用の究極のクロスプラットフォーム ツール。",
-            ui_title: "インターフェースを見る",
-            win_desc: "Windows 10 および 11 と互換性があります。",
-            lin_desc: "ほとんどの Linux ディストリビューションで動作します。",
-            mac_desc: "Intel および Apple Silicon のサポート。",
+            subtitle: "Rocknix デバイス用の究極のツール。",
+            ui_title: "インターフェース",
+            win_desc: "Windows 10/11 と互換性があります。",
+            lin_desc: "ほとんどの Linux で動作します。",
+            mac_desc: "Intel/Apple Silicon サポート。",
             tut_title: "クイックガイド",
-            tut_pt_all: "<strong>Windows:</strong> .exe を直接実行します。<br><strong>Linux:</strong> <code>chmod +x</code> を使用して実行します。<br><strong>macOS:</strong> 右クリックして「開く」を選択します。",
-            footer: "プロジェクトの管理者"
+            tut_body: "<strong>Windows:</strong> .exe を実行します。<br><strong>Linux:</strong> <code>chmod +x</code> を使用。<br><strong>macOS:</strong> 右クリックで「開く」。",
+            footer: "プロジェクト管理者"
         },
         ru: {
-            subtitle: "Ультимативный кроссплатформенный инструмент для вашего Rocknix.",
-            ui_title: "Интерфейс программы",
+            subtitle: "Ультимативный инструмент для вашего Rocknix.",
+            ui_title: "Интерфейс",
             win_desc: "Совместимо с Windows 10 и 11.",
             lin_desc: "Работает на большинстве дистрибутивов.",
             mac_desc: "Поддержка Intel и Apple Silicon.",
-            tut_title: "Краткое руководство",
-            tut_pt_all: "<strong>Windows:</strong> Запустите .exe.<br><strong>Linux:</strong> Используйте <code>chmod +x</code>.<br><strong>macOS:</strong> Правой кнопкой мыши -> 'Открыть'.",
-            footer: "Проект поддерживает"
+            tut_title: "Руководство",
+            tut_body: "<strong>Windows:</strong> Запустите .exe.<br><strong>Linux:</strong> <code>chmod +x</code> для AppImage.<br><strong>macOS:</strong> Правой кнопкой -> 'Открыть'.",
+            footer: "Поддержка проекта"
         },
         hi: {
-            subtitle: "आपके Rocknix डिवाइस के लिए बेहतरीन क्रॉस-प्लेटफ़ॉर्म टूल।",
+            subtitle: "Rocknix के लिए बेहतरीन टूल।",
             ui_title: "इंटरफ़ेस देखें",
-            win_desc: "Windows 10 और 11 के साथ संगत।",
-            lin_desc: "अधिकांश लिनक्स डिस्ट्रो पर काम करता है।",
-            mac_desc: "Intel और Apple Silicon के लिए समर्थन।",
+            win_desc: "Windows 10/11 संगत।",
+            lin_desc: "अधिकांश लिनक्स पर काम करता है।",
+            mac_desc: "Intel और Apple Silicon समर्थन।",
             tut_title: "त्वरित मार्गदर्शिका",
-            tut_pt_all: "<strong>Windows:</strong> सीधे .exe चलाएं।<br><strong>Linux:</strong> AppImage चलाने के लिए <code>chmod +x</code> का उपयोग करें।<br><strong>macOS:</strong> राइट-क्लिक करें और 'Open' चुनें।",
-            footer: "प्रोजेक्ट द्वारा बनाए रखा गया"
+            tut_body: "<strong>Windows:</strong> सीधे .exe चलाएं।<br><strong>Linux:</strong> <code>chmod +x</code> का उपयोग करें।<br><strong>macOS:</strong> राइट-क्लिक और 'Open' चुनें।",
+            footer: "प्रोजेक्ट द्वारा बनाया गया"
         }
     };
 
     function changeLanguage() {
         const lang = document.getElementById("langSwitch").value;
         const elements = document.querySelectorAll("[data-i18n]");
+        
         elements.forEach(el => {
             const key = el.getAttribute("data-i18n");
-            el.innerHTML = translations[lang][key]; 
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
         });
     }
+
+    // Inicializa a língua com base no navegador ou padrão PT
+    window.onload = () => {
+        const userLang = navigator.language.substring(0, 2);
+        if (translations[userLang]) {
+            document.getElementById("langSwitch").value = userLang;
+            changeLanguage();
+        }
+    };
 </script>
+
 </body>
 </html>
